@@ -13,7 +13,7 @@ import java.util.List;
 
 @RequestMapping("/api/usuario")
 @CrossOrigin(origins = "*" ) // Permite requisições do front end
-
+@RestController
 
 
 public class UsuarioController {
