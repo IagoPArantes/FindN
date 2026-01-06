@@ -4,10 +4,10 @@ public class Reservas {
 
     private String data_inicio;
     private String data_fim;
+    private int id_reservas;
 
-    public Reservas(String data_inicio, String data_fim) {
-        this.data_inicio = data_inicio;
-        this.data_fim = data_fim;
+    public Reservas() {
+
     }
 
     public String getData_inicio() {
@@ -24,6 +24,14 @@ public class Reservas {
 
     public void setData_fim(String data_fim) {
         this.data_fim = data_fim;
+    }
+
+    public int getId_reservas() {
+        return id_reservas;
+    }
+
+    public void setId_reservas(int id_reservas) {
+        this.id_reservas = id_reservas;
     }
 
     public String exibirReservas() {

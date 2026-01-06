@@ -68,13 +68,13 @@ public class TelefoneDao {
     }
 
     //DELETE
-    public void deletarTelefone(int idTelefone) {
+    public void deletarTelefone(int id_telefone) {
         String sql = "DELETE FROM Telefone WHERE id_telefone = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
 
-            stm.setInt(1, idTelefone);
+            stm.setInt(1, id_telefone);
             stm.executeUpdate();
             System.out.println("Telefone deletado com sucesso!");
 

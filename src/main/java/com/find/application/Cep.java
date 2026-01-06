@@ -17,12 +17,12 @@ public class Cep  {
         this.cep = cep;
     }
     
-    public int getIdCep() {
+    public int getId_cep() {
         return id_cep;
     }
     
-    public void setIdCep(int idCep) {
-        this.id_cep = idCep;
+    public void setIdCep(int id_cep) {
+        this.id_cep = id_cep;
     }
 
     public void setId(int id_cep) {

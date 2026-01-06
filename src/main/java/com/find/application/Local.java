@@ -10,16 +10,9 @@ public class Local  {
     private Cep cep;
     private Reservas reservas;
     private Usuario usuario;
+    private int id_local;
 
-    public Local(String nome, String descricao_local, float valor_diaria,Cidade cidade, Telefone telefone, Cep cep, Reservas reservas) {
-        this.nome = nome;
-        this.descricao_local = descricao_local;
-        this.valor_diaria = valor_diaria;
-        this.cidade = cidade;
-        this.telefone = telefone;
-        this.cep = cep;
-        this.reservas = reservas;
-        this.usuario = usuario;
+    public Local() {
 
     }
 
@@ -84,6 +77,13 @@ public class Local  {
 
     public void setUsuario(Usuario usuario) {
 
+    }
+
+    public int getId_local() {
+        return id_local;
+    }
+    public void setId_local(int id_local) {
+        this.id_local = id_local;
     }
 
 

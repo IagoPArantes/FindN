@@ -9,78 +9,78 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class cepDao {
+public class CepDao {
 
-    //Create
+    // CREATE
     public void criarCep(Cep cep) {
-        String sql = "INSERT INTO Cep (cep) VALUES (?)";
+        String sql = "INSERT INTO cep (cep) VALUES (?)";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
 
             stm.setString(1, cep.getCep());
             stm.executeUpdate();
-            System.out.println("Cep cadastrado com sucesso!");
+            System.out.println("CEP cadastrado com sucesso!");
 
         } catch (Exception e) {
-            System.out.println("Erro ao cadastrar Cep!" + e.getMessage());
+            System.out.println("Erro ao cadastrar CEP: " + e.getMessage());
         }
     }
 
-    //Read
-    List<Cep> listarCep() {
+    // READ
+    public List<Cep> listarCep() {
         List<Cep> lista = new ArrayList<>();
-        String sql = "SELECT id_cep, cep FROM Cep";
+        String sql = "SELECT id_cep, cep FROM cep";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql);
              ResultSet rs = stm.executeQuery()) {
 
-                while (rs.next()) {
-                    Cep cep = new Cep();
-                    cep.setId(rs.getInt("id_cep"));
-                    cep.setCep(rs.getString("cep"));
+            while (rs.next()) {
+                Cep cep = new Cep();
+                cep.setIdCep(rs.getInt("id_cep"));
+                cep.setCep(rs.getString("cep"));
 
-                    lista.add(cep);
-                }
-
-            } catch (Exception e) {
-                System.out.println("Erro ao listar CEPs: " + e.getMessage());
+                lista.add(cep);
             }
 
-            return lista;
+        } catch (Exception e) {
+            System.out.println("Erro ao listar CEPs: " + e.getMessage());
         }
+
+        return lista;
     }
-    
-    //Update
+
+    // UPDATE
     public void editarCep(Cep cep) {
-        String sql = "UPDATE Cep SET cep = ? WHERE id_cep = ?";
+        String sql = "UPDATE cep SET cep = ? WHERE id_cep = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement stm = conn.prepareStatement(sql)) {
 
             stm.setString(1, cep.getCep());
-            stm.setInt(1, cep.getIdCep());
+            stm.setInt(2, cep.getId_cep());
             stm.executeUpdate();
+            System.out.println("CEP atualizado com sucesso!");
 
         } catch (Exception e) {
-            System.out.println("Erro ao editar Cep!" + e.getMessage());
+            System.out.println("Erro ao editar CEP: " + e.getMessage());
         }
     }
 
-    //Delete
-    public void deletarCep(int id_cep) {
-        String sql = "DELETE FROM Cep WHERE id_cep = ?";
+    // DELETE
+    public void deletarCep(int idCep) {
+        String sql = "DELETE FROM cep WHERE id_cep = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
-            PreparedStatement stm = conn.prepareStatement(sql)){
+             PreparedStatement stm = conn.prepareStatement(sql)) {
 
-            stm.setInt(1, id_cep);
+            stm.setInt(1, idCep);
             stm.executeUpdate();
-            System.out.println("Cep deletado com sucesso!");
+            System.out.println("CEP deletado com sucesso!");
 
-        }catch (Exception e) {
-            System.out.println("Erro ao deletar Cep!" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar CEP: " + e.getMessage());
         }
     }
 }
